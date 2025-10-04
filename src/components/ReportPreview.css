@@ -1,0 +1,364 @@
+.report-preview {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.report-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.action-group {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-outline {
+  background-color: white;
+  color: #0066cc;
+  border: 2px solid #0066cc;
+}
+
+.btn-outline:hover {
+  background-color: #f0f7ff;
+}
+
+.report-content {
+  background: white;
+  padding: 48px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 3px solid #0066cc;
+}
+
+.lab-info h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #0066cc;
+  margin-bottom: 12px;
+}
+
+.lab-info p {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 4px 0;
+}
+
+.report-badge {
+  background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+  color: white;
+  padding: 16px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
+}
+
+.badge-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.badge-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+}
+
+.badge-number {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.report-title {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.report-title h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.report-date {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.patient-info {
+  background: #f8fafc;
+  padding: 24px;
+  border-radius: 8px;
+  margin-bottom: 32px;
+}
+
+.patient-info h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.info-item {
+  display: flex;
+  gap: 8px;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #64748b;
+  font-size: 14px;
+  min-width: 100px;
+}
+
+.info-value {
+  color: #1e293b;
+  font-size: 14px;
+}
+
+.test-results {
+  margin-bottom: 32px;
+}
+
+.test-results h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.results-table thead {
+  background-color: #f1f5f9;
+}
+
+.results-table th {
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  font-size: 13px;
+}
+
+.results-table td {
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+}
+
+.section-header {
+  background-color: #f8fafc;
+  font-weight: 600;
+  color: #0066cc;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.result-value {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.status-badge.normal {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.status-badge.low {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.status-badge.high {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.notes-section {
+  background: #fffbeb;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid #f59e0b;
+  margin-bottom: 32px;
+}
+
+.notes-section h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #92400e;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.notes-section p {
+  font-size: 14px;
+  color: #78350f;
+  line-height: 1.6;
+}
+
+.report-footer {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 2px solid #e2e8f0;
+}
+
+.signature-section {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 32px;
+}
+
+.signature-line {
+  text-align: center;
+}
+
+.signature-placeholder {
+  width: 200px;
+  height: 60px;
+  border-bottom: 2px solid #cbd5e1;
+  margin-bottom: 8px;
+}
+
+.signature-label {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.footer-note p {
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 8px 0;
+}
+
+.disclaimer {
+  font-style: italic;
+  color: #94a3b8;
+}
+
+@media print {
+  .report-preview {
+    max-width: none;
+  }
+
+  .report-content {
+    padding: 20px;
+    border: none;
+    border-radius: 0;
+  }
+
+  .report-header {
+    page-break-after: avoid;
+  }
+
+  .test-results {
+    page-break-inside: avoid;
+  }
+
+  .results-table {
+    page-break-inside: auto;
+  }
+
+  .results-table tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+
+  .signature-section {
+    page-break-inside: avoid;
+  }
+}
+
+@media (max-width: 768px) {
+  .report-content {
+    padding: 24px 20px;
+  }
+
+  .report-actions {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .action-group {
+    flex-direction: column;
+  }
+
+  .report-header {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .report-badge {
+    align-self: flex-start;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .results-table {
+    font-size: 12px;
+  }
+
+  .results-table th,
+  .results-table td {
+    padding: 8px 6px;
+  }
+
+  .signature-section {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .signature-placeholder {
+    width: 100%;
+  }
+}

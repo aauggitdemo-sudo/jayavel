@@ -1,0 +1,48 @@
+.blood-report-form h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.test-section {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 2px solid #f1f5f9;
+}
+
+.test-section h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.helper-text {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 4px;
+  display: block;
+}
+
+.btn-secondary {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+.btn-secondary:hover {
+  background-color: #e2e8f0;
+}
+
+@media (max-width: 768px) {
+  .test-section {
+    margin-top: 24px;
+    padding-top: 20px;
+  }
+
+  .test-section h3 {
+    font-size: 16px;
+  }
+}
