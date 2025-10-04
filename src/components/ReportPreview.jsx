@@ -1,241 +1,139 @@
 import './ReportPreview.css'
 
-function ReportPreview({ customerData, reportData, onBack, onReset }) {
+function ReportPreview({ customerData, reportData, onClose }) {
   const handlePrint = () => {
     window.print()
   }
 
   const formatDate = (dateString) => {
     const date = new Date(dateString)
-    return date.toLocaleDateString('en-IN', {
+    return date.toLocaleDateString('en-US', {
       day: '2-digit',
-      month: 'short',
+      month: '2-digit',
       year: 'numeric'
     })
   }
 
-  const getStatusClass = (value, min, max) => {
-    const numValue = parseFloat(value)
-    if (numValue < min) return 'low'
-    if (numValue > max) return 'high'
-    return 'normal'
+  const generateReportNumber = () => {
+    return `LAB-${new Date().getFullYear()}-${String(Math.floor(Math.random() * 10000)).padStart(4, '0')}`
   }
 
-  const getStatusText = (value, min, max) => {
-    const numValue = parseFloat(value)
-    if (numValue < min) return 'Low'
-    if (numValue > max) return 'High'
-    return 'Normal'
-  }
+  const reportNumber = generateReportNumber()
 
   return (
     <div className="report-preview">
       <div className="report-actions no-print">
-        <button className="btn btn-secondary" onClick={onBack}>
-          Edit Report
+        <button className="btn-close" onClick={onClose}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          Close
         </button>
-        <div className="action-group">
-          <button className="btn btn-primary" onClick={handlePrint}>
-            Print Report
-          </button>
-          <button className="btn btn-outline" onClick={onReset}>
-            New Report
-          </button>
-        </div>
+        <button className="btn-print" onClick={handlePrint}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 9V2H18V9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M6 18H4C3.46957 18 2.96086 17.7893 2.58579 17.4142C2.21071 17.0391 2 16.5304 2 16V11C2 10.4696 2.21071 9.96086 2.58579 9.58579C2.96086 9.21071 3.46957 9 4 9H20C20.5304 9 21.0391 9.21071 21.4142 9.58579C21.7893 9.96086 22 10.4696 22 11V16C22 16.5304 21.7893 17.0391 21.4142 17.4142C21.0391 17.7893 20.5304 18 20 18H18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M18 14H6V22H18V14Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          Print Report
+        </button>
       </div>
 
-      <div className="report-content">
-        <div className="report-header">
-          <div className="lab-info">
-            <h1>Jayavel Clinical Laboratory</h1>
-            <p>123 Medical Street, Healthcare City</p>
-            <p>Phone: +91 98765 43210 | Email: info@jayavellab.com</p>
-            <p>NABL Accredited | ISO 9001:2015 Certified</p>
-          </div>
-          <div className="report-badge">
-            <div className="badge-content">
-              <span className="badge-label">Report No.</span>
-              <span className="badge-number">{reportData.reportNumber}</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="report-title">
-          <h2>Blood Test Report</h2>
-          <div className="report-date">Report Date: {formatDate(reportData.testDate)}</div>
-        </div>
-
-        <div className="patient-info">
-          <h3>Patient Information</h3>
-          <div className="info-grid">
-            <div className="info-item">
-              <span className="info-label">Patient ID:</span>
-              <span className="info-value">{customerData.customerId}</span>
-            </div>
-            <div className="info-item">
-              <span className="info-label">Name:</span>
-              <span className="info-value">{customerData.name}</span>
-            </div>
-            <div className="info-item">
-              <span className="info-label">Age:</span>
-              <span className="info-value">{customerData.age} years</span>
-            </div>
-            <div className="info-item">
-              <span className="info-label">Gender:</span>
-              <span className="info-value">{customerData.gender}</span>
-            </div>
-            <div className="info-item">
-              <span className="info-label">Phone:</span>
-              <span className="info-value">{customerData.phone}</span>
-            </div>
-            {customerData.email && (
-              <div className="info-item">
-                <span className="info-label">Email:</span>
-                <span className="info-value">{customerData.email}</span>
+      <div className="report-container">
+        <div className="report-content">
+          <div className="report-header">
+            <div className="header-top">
+              <svg className="heartbeat-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 12H18L15 21L9 3L6 12H2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <div className="lab-title">
+                <h1>JAYAVEL CLINICAL LABORATORY</h1>
+                <p>Comprehensive Blood Testing Services</p>
+                <p>Phone: +91 9876543210 | Email: info@jayavellab.com</p>
               </div>
-            )}
-          </div>
-        </div>
-
-        <div className="test-results">
-          <h3>Test Results</h3>
-
-          <table className="results-table">
-            <thead>
-              <tr>
-                <th>Test Name</th>
-                <th>Result</th>
-                <th>Unit</th>
-                <th>Normal Range</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td colSpan="5" className="section-header">Complete Blood Count (CBC)</td>
-              </tr>
-              <tr>
-                <td>Hemoglobin</td>
-                <td className="result-value">{reportData.hemoglobin}</td>
-                <td>g/dL</td>
-                <td>12.0 - 16.0</td>
-                <td>
-                  <span className={`status-badge ${getStatusClass(reportData.hemoglobin, 12, 16)}`}>
-                    {getStatusText(reportData.hemoglobin, 12, 16)}
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td>WBC Count</td>
-                <td className="result-value">{reportData.wbcCount}</td>
-                <td>cells/μL</td>
-                <td>4,000 - 11,000</td>
-                <td>
-                  <span className={`status-badge ${getStatusClass(reportData.wbcCount, 4000, 11000)}`}>
-                    {getStatusText(reportData.wbcCount, 4000, 11000)}
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td>RBC Count</td>
-                <td className="result-value">{reportData.rbcCount}</td>
-                <td>million cells/μL</td>
-                <td>4.5 - 5.5</td>
-                <td>
-                  <span className={`status-badge ${getStatusClass(reportData.rbcCount, 4.5, 5.5)}`}>
-                    {getStatusText(reportData.rbcCount, 4.5, 5.5)}
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td>Platelet Count</td>
-                <td className="result-value">{reportData.plateletCount}</td>
-                <td>cells/μL</td>
-                <td>150,000 - 450,000</td>
-                <td>
-                  <span className={`status-badge ${getStatusClass(reportData.plateletCount, 150000, 450000)}`}>
-                    {getStatusText(reportData.plateletCount, 150000, 450000)}
-                  </span>
-                </td>
-              </tr>
-
-              {(reportData.bloodSugarFasting || reportData.bloodSugarPP) && (
-                <>
-                  <tr>
-                    <td colSpan="5" className="section-header">Blood Sugar Tests</td>
-                  </tr>
-                  {reportData.bloodSugarFasting && (
-                    <tr>
-                      <td>Fasting Blood Sugar</td>
-                      <td className="result-value">{reportData.bloodSugarFasting}</td>
-                      <td>mg/dL</td>
-                      <td>70 - 100</td>
-                      <td>
-                        <span className={`status-badge ${getStatusClass(reportData.bloodSugarFasting, 70, 100)}`}>
-                          {getStatusText(reportData.bloodSugarFasting, 70, 100)}
-                        </span>
-                      </td>
-                    </tr>
-                  )}
-                  {reportData.bloodSugarPP && (
-                    <tr>
-                      <td>Post-Prandial Blood Sugar</td>
-                      <td className="result-value">{reportData.bloodSugarPP}</td>
-                      <td>mg/dL</td>
-                      <td>100 - 140</td>
-                      <td>
-                        <span className={`status-badge ${getStatusClass(reportData.bloodSugarPP, 100, 140)}`}>
-                          {getStatusText(reportData.bloodSugarPP, 100, 140)}
-                        </span>
-                      </td>
-                    </tr>
-                  )}
-                </>
-              )}
-
-              {reportData.cholesterolTotal && (
-                <>
-                  <tr>
-                    <td colSpan="5" className="section-header">Lipid Profile</td>
-                  </tr>
-                  <tr>
-                    <td>Total Cholesterol</td>
-                    <td className="result-value">{reportData.cholesterolTotal}</td>
-                    <td>mg/dL</td>
-                    <td>&lt; 200</td>
-                    <td>
-                      <span className={`status-badge ${getStatusClass(reportData.cholesterolTotal, 0, 200)}`}>
-                        {getStatusText(reportData.cholesterolTotal, 0, 200)}
-                      </span>
-                    </td>
-                  </tr>
-                </>
-              )}
-            </tbody>
-          </table>
-        </div>
-
-        {reportData.notes && (
-          <div className="notes-section">
-            <h3>Additional Notes</h3>
-            <p>{reportData.notes}</p>
-          </div>
-        )}
-
-        <div className="report-footer">
-          <div className="signature-section">
-            <div className="signature-line">
-              <div className="signature-placeholder"></div>
-              <p className="signature-label">Lab Technician</p>
-            </div>
-            <div className="signature-line">
-              <div className="signature-placeholder"></div>
-              <p className="signature-label">Authorized Signatory</p>
             </div>
           </div>
-          <div className="footer-note">
-            <p><strong>Note:</strong> This report is generated electronically and valid without signature. For any queries, please contact the laboratory.</p>
-            <p className="disclaimer">These results should be correlated clinically. Please consult your physician for proper interpretation.</p>
+
+          <div className="report-info-section">
+            <div className="report-details-box">
+              <div className="details-column">
+                <h3>Patient Details</h3>
+                <div className="detail-row">
+                  <span className="detail-label">Name:</span>
+                  <span className="detail-value">{customerData?.name}</span>
+                </div>
+                <div className="detail-row">
+                  <span className="detail-label">Age/Gender:</span>
+                  <span className="detail-value">{customerData?.age} Years / {customerData?.gender}</span>
+                </div>
+                <div className="detail-row">
+                  <span className="detail-label">Phone:</span>
+                  <span className="detail-value">{customerData?.phone}</span>
+                </div>
+              </div>
+
+              <div className="details-column">
+                <h3>Report Details</h3>
+                <div className="detail-row">
+                  <span className="detail-label">Report No:</span>
+                  <span className="detail-value">{reportNumber}</span>
+                </div>
+                <div className="detail-row">
+                  <span className="detail-label">Test Date:</span>
+                  <span className="detail-value">{formatDate(reportData?.testDate)}</span>
+                </div>
+                <div className="detail-row">
+                  <span className="detail-label">Report Date:</span>
+                  <span className="detail-value">{formatDate(reportData?.reportDate)}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="test-results-section">
+            <h2>BLOOD TEST RESULTS</h2>
+
+            <table className="results-table">
+              <thead>
+                <tr>
+                  <th>Test Name</th>
+                  <th>Result</th>
+                  <th>Unit</th>
+                  <th>Normal Range</th>
+                </tr>
+              </thead>
+              <tbody>
+                {reportData?.tests && reportData.tests.map((test, index) => (
+                  <tr key={index}>
+                    <td>{test.testName}</td>
+                    <td className="result-value">{test.value}</td>
+                    <td>{test.unit}</td>
+                    <td>{test.normalRange}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {reportData?.notes && (
+            <div className="notes-section">
+              <p><strong>Notes:</strong> {reportData.notes}</p>
+            </div>
+          )}
+
+          <div className="report-footer">
+            <div className="signature-line">
+              <div className="signature-space"></div>
+              <p className="signature-label">Lab Director Signature</p>
+              <p className="signature-date">Date: {formatDate(reportData?.reportDate)}</p>
+            </div>
+
+            <div className="footer-text">
+              <p>This is a computer generated report</p>
+              <p>Authorized by Jayavel Clinical Laboratory</p>
+              <p>For any queries, please contact us at +91 9876543210</p>
+            </div>
           </div>
         </div>
       </div>
