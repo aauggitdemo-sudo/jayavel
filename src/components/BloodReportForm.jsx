@@ -53,12 +53,16 @@ function BloodReportForm({ onSubmit, onCancel, initialData, customerData }) {
     const newTests = [...tests]
     newTests[index][field] = value
 
-    if (field === 'testName' && value !== 'Custom Test') {
+    if (field === 'testName' && value !== 'Custom Test' && value !== '') {
       const selectedTest = TEST_OPTIONS.find(t => t.value === value)
       if (selectedTest) {
         newTests[index].unit = selectedTest.unit
         newTests[index].normalRange = selectedTest.normalRange
       }
+    } else if (field === 'testName' && value === 'Custom Test') {
+      newTests[index].customTestName = ''
+      newTests[index].unit = ''
+      newTests[index].normalRange = ''
     }
 
     setTests(newTests)
@@ -174,6 +178,17 @@ function BloodReportForm({ onSubmit, onCancel, initialData, customerData }) {
                     ))}
                   </select>
 
+                  {test.testName === 'Custom Test' && (
+                    <input
+                      type="text"
+                      value={test.customTestName || ''}
+                      onChange={(e) => handleTestChange(index, 'customTestName', e.target.value)}
+                      placeholder="Test name"
+                      className="test-input"
+                      required
+                    />
+                  )}
+
                   <input
                     type="text"
                     value={test.value}
@@ -189,7 +204,6 @@ function BloodReportForm({ onSubmit, onCancel, initialData, customerData }) {
                     onChange={(e) => handleTestChange(index, 'unit', e.target.value)}
                     placeholder="Unit"
                     className="test-input"
-                    readOnly={test.testName !== 'Custom Test'}
                   />
 
                   <input
@@ -198,7 +212,6 @@ function BloodReportForm({ onSubmit, onCancel, initialData, customerData }) {
                     onChange={(e) => handleTestChange(index, 'normalRange', e.target.value)}
                     placeholder="Normal range"
                     className="test-input"
-                    readOnly={test.testName !== 'Custom Test'}
                   />
                 </div>
 

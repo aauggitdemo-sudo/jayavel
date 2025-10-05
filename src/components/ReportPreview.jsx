@@ -106,7 +106,7 @@ function ReportPreview({ customerData, reportData, onClose }) {
               <tbody>
                 {reportData?.tests && reportData.tests.map((test, index) => (
                   <tr key={index}>
-                    <td>{test.testName}</td>
+                    <td>{test.testName === 'Custom Test' ? test.customTestName : test.testName}</td>
                     <td className="result-value">{test.value}</td>
                     <td>{test.unit}</td>
                     <td>{test.normalRange}</td>

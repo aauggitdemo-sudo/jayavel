@@ -154,10 +154,19 @@
 }
 
 .test-fields {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  display: flex;
   gap: 12px;
   flex: 1;
+  flex-wrap: wrap;
+}
+
+.test-fields .test-select {
+  flex: 0 0 200px;
+}
+
+.test-fields .test-input {
+  flex: 1;
+  min-width: 100px;
 }
 
 .test-select,

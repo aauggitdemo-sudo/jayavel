@@ -71,12 +71,17 @@
 .header-top {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 16px;
 }
 
 .heartbeat-icon {
   color: #2563eb;
   flex-shrink: 0;
+}
+
+.lab-title {
+  text-align: center;
 }
 
 .lab-title h1 {
