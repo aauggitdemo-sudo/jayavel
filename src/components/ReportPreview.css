@@ -246,8 +246,20 @@
 }
 
 @media print {
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
   .report-preview {
     max-width: none;
+    margin: 0;
+    padding: 0;
   }
 
   .report-actions {
@@ -257,16 +269,124 @@
   .report-container {
     box-shadow: none;
     max-width: none;
+    margin: 0;
   }
 
   .report-content {
     border: 2px solid #2563eb;
-    page-break-inside: avoid;
+    padding: 0;
+    margin: 0;
+    height: auto;
+  }
+
+  .report-header {
+    padding: 12px 20px;
+  }
+
+  .header-top {
+    gap: 12px;
+  }
+
+  .heartbeat-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .lab-title h1 {
+    font-size: 20px;
+    margin: 0 0 2px 0;
+  }
+
+  .lab-title p {
+    font-size: 10px;
+    margin: 1px 0;
+  }
+
+  .report-info-section {
+    padding: 12px 20px;
+  }
+
+  .details-column h3 {
+    font-size: 12px;
+    margin: 0 0 8px 0;
+  }
+
+  .detail-row {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+
+  .detail-label {
+    min-width: 80px;
+  }
+
+  .test-results-section {
+    padding: 12px 20px;
+  }
+
+  .test-results-section h2 {
+    font-size: 14px;
+    margin: 0 0 10px 0;
+    padding: 6px 0;
+  }
+
+  .results-table {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+
+  .results-table th {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  .results-table td {
+    padding: 8px 10px;
+  }
+
+  .notes-section {
+    padding: 10px 20px;
+  }
+
+  .notes-section p {
+    font-size: 11px;
+  }
+
+  .report-footer {
+    padding: 12px 20px 10px 20px;
+  }
+
+  .signature-line {
+    margin-bottom: 12px;
+  }
+
+  .signature-space {
+    height: 40px;
+    margin-bottom: 6px;
+  }
+
+  .signature-label {
+    font-size: 11px;
+  }
+
+  .signature-date {
+    font-size: 10px;
+    margin: 2px 0 0 0;
+  }
+
+  .footer-text {
+    padding-top: 10px;
+  }
+
+  .footer-text p {
+    font-size: 9px;
+    margin: 2px 0;
   }
 
   .report-header,
   .report-info-section,
-  .test-results-section {
+  .test-results-section,
+  .report-footer {
     page-break-inside: avoid;
   }
 
